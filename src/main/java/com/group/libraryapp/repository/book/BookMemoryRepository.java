@@ -6,11 +6,11 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class BookMemoryRepository implements BookRepository {
 
-    // private final List<Book> books = new ArrayList<Book>();
+  // private final List<Book> books = new ArrayList<Book>();
 
-    @Override
-    public void saveBook() {
-        System.out.println("MemoryRepository");
-        // books.add(new Book());
-    }
+  @Override
+  public void saveBook() {
+    System.out.println("MemoryRepository");
+    // books.add(new Book());
+  }
 }

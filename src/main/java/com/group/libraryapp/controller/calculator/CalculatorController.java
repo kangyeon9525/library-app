@@ -9,13 +9,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class CalculatorController {
-    @GetMapping("/add") // GET /add
-    public int addTwoNumbers(CalculatorAddRequest request) {
-        return request.getNumber1() + request.getNumber2();
-    }
+  @GetMapping("/add") // GET /add
+  public int addTwoNumbers(CalculatorAddRequest request) {
+    return request.getNumber1() + request.getNumber2();
+  }
 
-    @PostMapping("/multiply") // POST /multiply
-    public int multiplyTwoNumbers(@RequestBody CalculatorMultiplyRequest request) {
-        return request.getNumber1() * request.getNumber2();
-    }
+  @PostMapping("/multiply") // POST /multiply
+  public int multiplyTwoNumbers(@RequestBody CalculatorMultiplyRequest request) {
+    return request.getNumber1() * request.getNumber2();
+  }
 }

@@ -5,8 +5,7 @@ import com.group.libraryapp.dto.user.request.UserCreateRequest;
 import com.group.libraryapp.dto.user.request.UserUpdateRequest;
 import com.group.libraryapp.dto.user.response.UserResponse;
 import com.group.libraryapp.service.fruit.FruitService;
-import com.group.libraryapp.service.user.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.group.libraryapp.service.user.UserServiceV2;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,12 +15,10 @@ import java.util.List;
 @RestController
 public class UserController {
 
-    private final UserService userService;
-    private final FruitService fruitService;
+    private final UserServiceV2 userService;
 
-    public UserController(UserService userService, @Qualifier("main") FruitService fruitService) {
+    public UserController(UserServiceV2 userService, @Qualifier("main") FruitService fruitService) {
         this.userService = userService;
-        this.fruitService = fruitService;
     }
 
     private final List<User> users = new ArrayList<>();
