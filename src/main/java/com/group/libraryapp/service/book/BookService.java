@@ -28,12 +28,12 @@ public class BookService {
   }
 
   @Transactional
-  public void saveBook(@RequestBody BookCreateRequest request) {
+  public void saveBook(BookCreateRequest request) {
     bookRepository.save(new Book(request.getName()));
   }
 
   @Transactional
-  public void loanBook(@RequestBody BookLoanRequest request) {
+  public void loanBook(BookLoanRequest request) {
     Book book = bookRepository.findByName(request.getBookName())
       .orElseThrow(IllegalArgumentException::new);
 
@@ -43,8 +43,7 @@ public class BookService {
 
     User user = userRepository.findByName(request.getUserName())
       .orElseThrow(IllegalArgumentException::new);
-
-    userLoanHistoryRepository.save(new UserLoanHistory(user.getId(), book.getName()));
+    user.loanBook(book.getName());
   }
 
   @Transactional
@@ -52,9 +51,7 @@ public class BookService {
     User user = userRepository.findByName(request.getUserName())
       .orElseThrow(IllegalArgumentException::new);
 
-    UserLoanHistory history = userLoanHistoryRepository.findByUserIdAndBookName(user.getId(), request.getBookName())
-      .orElseThrow(IllegalArgumentException::new);
-    history.doReturn();
+    user.returnBook(request.getBookName());
   }
 
 }
